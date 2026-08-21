@@ -42,4 +42,5 @@
             </p>
         @endforelse
     </div>
+    {{ $categories->links() }}
 </x-app-layout>
