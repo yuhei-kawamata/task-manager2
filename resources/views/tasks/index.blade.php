@@ -37,9 +37,11 @@
                             </span>
                         </div>
                     </div>
-                    <a href="{{ route('tasks.edit', $task) }}" class="bg-gray-500 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm">
-                        編集
-                    </a>
+                    @can('update', $task)
+                        <a href="{{ route('tasks.edit', $task) }}" class="bg-gray-500 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm">
+                            編集
+                        </a>
+                    @endcan
                 </div>
             </div>
         @empty
@@ -48,4 +50,5 @@
             </p>
         @endforelse
     </div>
+    {{ $tasks->links() }}
 </x-app-layout>
