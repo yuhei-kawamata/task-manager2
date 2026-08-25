@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class TaskRequest extends FormRequest
@@ -17,7 +18,7 @@ class TaskRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
@@ -38,7 +39,7 @@ class TaskRequest extends FormRequest
             'title.max' => 'タスク名は255文字以内で入力してください',
             'description.max' => '説明は1000文字以内で入力してください',
             'priority.required' => '優先度を選択してください',
-            'priority.in' => '優先度は高・中・低のいずれかを選択してください'
+            'priority.in' => '優先度は高・中・低のいずれかを選択してください',
         ];
     }
 }
