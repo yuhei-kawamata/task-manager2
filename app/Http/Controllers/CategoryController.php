@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -14,7 +13,7 @@ class CategoryController extends Controller
     public function index()
     {
         /* taskの詳細を含めて取得するとパフォーマンスが落ちる
-           必要なのはタスクの件数のみなので、with('tasks')ではなく、withcount('tasks')
+        必要なのはタスクの件数のみなので、with('tasks')ではなく、withcount('tasks')とする
         */
 
         $categories = Category::withcount('tasks')->latest()->simplepaginate(10);
@@ -46,7 +45,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        $category->load('task');
+        $category->load('tasks');
 
         return view('categories.show', compact('category'));
     }
